@@ -49,17 +49,35 @@ const variantClasses = {
   soft: "bg-indigo-50 text-indigo-600 hover:bg-indigo-100",
 };
 
+const iconSizes = {
+  xs: "size-3",
+  sm: "size-3",
+  md: "size-4",
+  lg: "size-4",
+  xl: "size-5",
+};
+
 // note -> shape(circular) only for the button that fills with icon only
 function Button({ children, size = "md", shape = "normal", variant = "normal" }) {
   const radius = shape === "normal" ? radiusNormal[size] : "rounded-full";
   const padding = paddingByShape[shape][size];
   const text = shape === "circular" ? "" : textClasses[size];
+  const iconSize = iconSizes[size];
+
+  const processedChildren = React.Children.map(children, (child) => {
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child, {
+        className: `${iconSize} ${child.props.className || ""}`,
+      });
+    }
+    return child;
+  });
 
   return (
     <button
-      className={`font-semibold shadow-xs ${radius} ${padding} ${text} ${variantClasses[variant]}`}
+      className={`inline-flex items-center justify-center gap-1 font-semibold shadow-xs transition ${radius} ${padding} ${text} ${variantClasses[variant]}`}
     >
-      {children}
+      {processedChildren}
     </button>
   );
 }
