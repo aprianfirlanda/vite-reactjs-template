@@ -44,7 +44,7 @@ const paddingByShape = {
 const variantClasses = {
   normal:
     'bg-indigo-600 text-white hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600',
-  outlined: 'bg-white text-gray-900 inset-ring inset-ring-gray-300 hover:bg-gray-50',
+  outlined: 'bg-white text-indigo-800 inset-ring inset-ring-indigo-300 hover:bg-indigo-50',
   soft: 'bg-indigo-50 text-indigo-600 hover:bg-indigo-100',
 };
 

@@ -29,6 +29,28 @@ createRoot(document.getElementById('root')).render(
       </Button>
     </div>
     <div className="mx-auto w-fit">
+      <Button size="xs" variant="outlined">
+        <PlusIcon />
+        Add
+      </Button>
+      <Button size="sm" variant="outlined">
+        <PlusIcon />
+        Add
+      </Button>
+      <Button size="md" variant="outlined">
+        <PlusIcon />
+        Add
+      </Button>
+      <Button size="lg" variant="outlined">
+        <PlusIcon />
+        Add
+      </Button>
+      <Button size="xl" variant="outlined">
+        <PlusIcon />
+        Add
+      </Button>
+    </div>
+    <div className="mx-auto w-fit">
       <Button size="xs" shape="rounded">
         <PlusIcon />
         Add
