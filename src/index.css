@@ -1,5 +1,16 @@
 @import 'tailwindcss';
 
+/*
+	•	Primary → Indigo (modern, trustworthy, widely used as a brand base)
+	•	Secondary → Pink (contrast, playful, accent)
+	•	Accent → Amber (attention-catching, used for highlights)
+	•	Neutral → Gray (for text, borders, UI elements)
+	•	Base → Slate (backgrounds, subtle surfaces)
+	•	Info → Sky (light blue, clear and informational)
+	•	Success → Emerald (natural green for success states)
+	•	Warning → Amber (yellow/orange for alerts)
+	•	Error → Rose (red/pink for errors, more modern than raw red)
+*/
 @theme {
   /* Brand Colors */
   --color-primary-50:  var(--color-indigo-50);
