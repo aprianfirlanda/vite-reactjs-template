@@ -101,13 +101,15 @@ const iconSizes = {
   xl: 'size-5',
 };
 
-// @TODO: add props type, disabled, isLoading, onClick
+// @TODO: add props isLoading, onClick
 function Button({
   children,
+  type = 'button',
   size = 'md',
   shape = 'normal',
   variant = 'normal',
   color = 'primary',
+  disabled = false,
 }) {
   const radius = shape === 'normal' ? radiusNormal[size] : 'rounded-full';
   const padding = paddingByShape[shape][size];
@@ -126,6 +128,8 @@ function Button({
 
   return (
     <button
+      type={type}
+      disabled={disabled}
       className={`inline-flex items-center justify-center gap-1 font-semibold shadow-xs transition ${radius} ${padding} ${text} ${variantClass}`}
     >
       {processedChildren}
