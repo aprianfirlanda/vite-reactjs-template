@@ -29,25 +29,25 @@ createRoot(document.getElementById('root')).render(
       </Button>
     </div>
     <div className="mx-auto w-fit">
-      <Button size="xs" color="secondary">
-        <PlusIcon />
+      <Button size="xs" color="secondary" loading>
         Add
+        <PlusIcon />
       </Button>
-      <Button size="sm" color="secondary">
-        <PlusIcon />
+      <Button size="sm" color="secondary" loading>
         Add
+        <PlusIcon />
       </Button>
-      <Button size="md" color="secondary">
-        <PlusIcon />
+      <Button size="md" color="secondary" loading>
         Add
+        <PlusIcon />
       </Button>
-      <Button size="lg" color="secondary">
-        <PlusIcon />
+      <Button size="lg" color="secondary" loading>
         Add
+        <PlusIcon />
       </Button>
-      <Button size="xl" color="secondary">
-        <PlusIcon />
+      <Button size="xl" color="secondary" loading>
         Add
+        <PlusIcon />
       </Button>
     </div>
     <div className="mx-auto w-fit">

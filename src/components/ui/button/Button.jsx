@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ArrowPathIcon } from '@heroicons/react/24/outline/index.js';
 
 const textClasses = {
   xs: 'text-xs',
@@ -101,7 +102,6 @@ const iconSizes = {
   xl: 'size-5',
 };
 
-// @TODO: add props isLoading, onClick
 function Button({
   children,
   type = 'button',
@@ -110,6 +110,7 @@ function Button({
   variant = 'normal',
   color = 'primary',
   onClick,
+  loading = false,
   disabled = false,
 }) {
   const radius = shape === 'normal' ? radiusNormal[size] : 'rounded-full';
@@ -118,23 +119,43 @@ function Button({
   const iconSize = iconSizes[size];
   const variantClass = colorClasses[color]?.[variant] || colorClasses.primary[variant];
 
-  const processedChildren = React.Children.map(children, (child) => {
-    if (React.isValidElement(child)) {
-      return React.cloneElement(child, {
-        className: `${iconSize} ${child.props.className || ''}`,
-      });
+  const childCount = React.Children.count(children);
+  const isSingleElement = childCount === 1 && React.isValidElement(children);
+
+  const spinner = <ArrowPathIcon className={`${iconSize} animate-spin`} />;
+
+  let replacedIcon = false;
+  const mapped = React.Children.map(children, (child) => {
+    if (!React.isValidElement(child)) return child;
+
+    if (loading && !replacedIcon) {
+      replacedIcon = true;
+      return spinner;
     }
-    return child;
+    return React.cloneElement(child, {
+      className: `${iconSize} ${child.props.className || ''}`,
+      'aria-hidden': child.props['aria-hidden'] ?? !!text,
+    });
   });
+
+  let finalChildren = mapped;
+
+  if (loading && !replacedIcon) {
+    finalChildren = shape === 'circular' ? spinner : [spinner, ...React.Children.toArray(mapped)];
+  }
+
+  const gapClass = shape === 'circular' || (isSingleElement && replacedIcon) ? '' : 'gap-1';
 
   return (
     <button
       type={type}
-      className={`inline-flex items-center justify-center gap-1 font-semibold shadow-xs transition ${radius} ${padding} ${text} ${variantClass}`}
+      className={`inline-flex items-center justify-center font-semibold shadow-xs transition
+        ${gapClass} ${radius} ${padding} ${text} ${variantClass}
+        ${disabled || loading ? 'opacity-60 cursor-not-allowed' : ''}`}
       onClick={onClick}
-      disabled={disabled}
+      disabled={disabled || loading}
     >
-      {processedChildren}
+      {finalChildren}
     </button>
   );
 }
@@ -156,6 +177,7 @@ Button.propTypes = {
     'error',
   ]),
   onClick: PropTypes.func,
+  loading: PropTypes.bool,
   disabled: PropTypes.bool,
 };
 
