@@ -43,9 +43,9 @@ const paddingByShape = {
 
 const variantClasses = {
   normal:
-    'bg-indigo-600 text-white hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600',
-  outlined: 'bg-white text-indigo-800 inset-ring inset-ring-indigo-300 hover:bg-indigo-50',
-  soft: 'bg-indigo-50 text-indigo-600 hover:bg-indigo-100',
+    'bg-primary-600 text-white hover:bg-primary-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600',
+  outlined: 'bg-white text-primary-800 inset-ring inset-ring-primary-300 hover:bg-primary-50',
+  soft: 'bg-primary-50 text-primary-600 hover:bg-primary-100',
 };
 
 const iconSizes = {
@@ -56,7 +56,6 @@ const iconSizes = {
   xl: 'size-5',
 };
 
-// note -> shape(circular) only for the button that fills with icon only
 function Button({ children, size = 'md', shape = 'normal', variant = 'normal' }) {
   const radius = shape === 'normal' ? radiusNormal[size] : 'rounded-full';
   const padding = paddingByShape[shape][size];
