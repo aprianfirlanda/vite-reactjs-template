@@ -139,6 +139,7 @@ function Button({
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
   size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   shape: PropTypes.oneOf(['normal', 'rounded', 'circular']),
   variant: PropTypes.oneOf(['normal', 'outlined', 'soft']),
@@ -152,6 +153,7 @@ Button.propTypes = {
     'warning',
     'error',
   ]),
+  disabled: PropTypes.bool,
 };
 
 export default Button;
