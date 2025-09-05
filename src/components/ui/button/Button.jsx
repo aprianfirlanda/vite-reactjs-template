@@ -101,6 +101,7 @@ const iconSizes = {
   xl: 'size-5',
 };
 
+// @TODO: add props type, disabled, isLoading, onClick
 function Button({
   children,
   size = 'md',
