@@ -109,6 +109,7 @@ function Button({
   shape = 'normal',
   variant = 'normal',
   color = 'primary',
+  onClick,
   disabled = false,
 }) {
   const radius = shape === 'normal' ? radiusNormal[size] : 'rounded-full';
@@ -129,8 +130,9 @@ function Button({
   return (
     <button
       type={type}
-      disabled={disabled}
       className={`inline-flex items-center justify-center gap-1 font-semibold shadow-xs transition ${radius} ${padding} ${text} ${variantClass}`}
+      onClick={onClick}
+      disabled={disabled}
     >
       {processedChildren}
     </button>
@@ -153,6 +155,7 @@ Button.propTypes = {
     'warning',
     'error',
   ]),
+  onClick: PropTypes.func,
   disabled: PropTypes.bool,
 };
 
